@@ -63,7 +63,7 @@ export class CardServicosCadastrados extends React.Component{
                             {trabalho.description}
                         </Descricao>
                         <ButtonContainer>
-                            <Button variant="contained" color="primary">Excluir</Button>
+                            <Button variant="contained" color="secondary">Excluir</Button>
                         </ButtonContainer>
                     </CardContainer>
                 </ContainerGeral>
