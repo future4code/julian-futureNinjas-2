@@ -6,11 +6,12 @@ import Button from '@material-ui/core/Button'
 const HomePrincipalLogo = styled.div`
 text-align: center;
 margin: 0 auto;
+justify-content: center;
 `
 
 const HomePrincipalBotoes = styled.div`
 display: flex;
-justify-content: center;
+justify-content: space-evenly;
 
 
 `
@@ -18,11 +19,11 @@ justify-content: center;
 export class HomeInicial extends Component {
     render() {
         return(
-            <div>
-                <HomePrincipalLogo>
+            
+            <HomePrincipalLogo>
                 <img src={logoPadrao}/> 
 
-                </HomePrincipalLogo>
+                
 
                 <HomePrincipalBotoes>            
                 <Button variant="contained" color="primary">
@@ -33,7 +34,7 @@ export class HomeInicial extends Component {
                 </Button>
                 </HomePrincipalBotoes>  
                 
-            </div>
+            </HomePrincipalLogo>
 
            
 
