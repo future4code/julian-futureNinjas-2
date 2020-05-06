@@ -8,15 +8,12 @@ import { withStyles } from "@material-ui/core";
 const HeaderPrestadorContainer = styled.div`
   display: flex;
   flex-direction: column;
-  width: 1024px;
-  height: 768px;
   align-items: center;
 `
 
 const NinjaHeaderPrestador = styled.div`
   width: 197px;
   height: 163px;
-  margin-left: 35px;
 `
 
 const BotoesHeaderPrestadorContainer = styled.div`
