@@ -26,7 +26,7 @@ function App() {
 		<JssProvider jss={jss} generateClassName={generateClassName}>
 			<MuiThemeProvider theme={theme}>
 				<CssBaseline />
-				<AppContainer />
+				
 			</MuiThemeProvider>
 		</JssProvider>
 	)
