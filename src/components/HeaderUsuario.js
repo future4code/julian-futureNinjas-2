@@ -20,15 +20,15 @@ const BotoesHeaderUsuarioContainer = styled.div`
   background-color: #9B7ED9;
   display: flex;
   border-radius: 10px;
-  width: 1050px;
-  height: 124px;
+  width: 30vw;
+  height: 6vh;
   justify-content: space-evenly;
   align-self: center;
   
   
 `
 const BotoesHeaderUsuario = styled(Button)`
-  font-size: 25px;
+  font-size: 13px;
   color: white;
   &:hover {
     font-weight: bold;
@@ -36,11 +36,10 @@ const BotoesHeaderUsuario = styled(Button)`
 `
 
 const LinhaVertical = styled.div`
-  border-left: 2px solid white;
+  border-left: 1px solid white;
   box-sizing: border-box;
-  box-shadow: 1px;
-  height: 100px;
-  margin-top: 13px;
+  height: 4vh;
+  margin-top: 0.9vh;
 `
 
 

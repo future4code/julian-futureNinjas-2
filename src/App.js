@@ -29,8 +29,6 @@ function App() {
 			<MuiThemeProvider theme={theme}>
 				<CssBaseline />
 				<AppContainer />
-				{/* <HeaderPrestador /> */}
-				<HeaderUsuario />
 			</MuiThemeProvider>
 		</JssProvider>
 	)
