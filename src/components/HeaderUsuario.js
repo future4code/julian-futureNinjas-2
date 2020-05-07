@@ -2,8 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import ninjaVerde from "../imagens/ninja-olho-roxo.png"
 import Button from "@material-ui/core/Button";
-import { withStyles } from "@material-ui/core";
-
 
 const HeaderUsuarioContainer = styled.div`
   display: flex;

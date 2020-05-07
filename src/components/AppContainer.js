@@ -7,6 +7,7 @@ import Filtro from './Filtro'
 import FormularioTrabalho from './FormularioTrabalho'
 import HeaderPrestador from './HeaderPrestador'
 import HeaderUsuario from './HeaderUsuario'
+import BlocoServicoUsuario from "./BlocoServicoUsuario"
 
 
 export class AppContainer extends Component {
@@ -81,8 +82,10 @@ export class AppContainer extends Component {
 
     return (
       <div>
+
       <Filtro onTituloChange={this.onTituloChange} onVMinChange={this.onVMinChange} onVMaxChange={this.onVMaxChange} />
       <CardLista servicosDisponiveis={servicosFiltrados} />
+
       </div>
     )
   }

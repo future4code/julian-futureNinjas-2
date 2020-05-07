@@ -2,8 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import ninjaVerde from "../imagens/ninja-olho-verde.png"
 import Button from "@material-ui/core/Button";
-import { withStyles } from "@material-ui/core";
-
 
 const HeaderPrestadorContainer = styled.div`
   display: flex;
