@@ -1,20 +1,18 @@
 import React, { Component } from 'react'
-import {CardServicosCadastrados} from './CardServicosCadastrados'
-
+import CardServicosCadastrados from './CardServicosCadastrados'
 import Footer from './Footer'
-
-import { HomeInicial } from './HomeInicial'
-
+import HomeInicial from './HomeInicial'
 import CardServiçoMin from './CardServiçoMin'
 import Filtro from './Filtro'
 import FormularioTrabalho from './FormularioTrabalho'
+import HeaderPrestador from './HeaderPrestador'
 
 
 export class AppContainer extends Component {
   render() {
     return (
       <div>
-        <CardServicosCadastrados/>
+      <CardServicosCadastrados/>
       </div>
     )
   }

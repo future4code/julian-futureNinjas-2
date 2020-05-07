@@ -1,35 +1,55 @@
 import React from 'react'
 import styled from 'styled-components'
-import Button from '@material-ui/core/Button';
+import { Typography, Button, Card } from '@material-ui/core';
 
-const ContainerGeral = styled.div`
+const ContainerGeral = styled(Card)`
     display: flex;
     justify-content: center;
 `
-const CardContainer = styled.div`
+const CardContainer = styled(Card)`
     background-color: #ECEBF2;
-    border-radius: 10px;
     display: flex;
     flex-direction: column;
-    width: 50vw;
-    padding: 1%;
     margin: 10px;
+    width: 600px;
+`
+
+const TituloContainer = styled(Card)`
+    align-self: center;
+    background-color: #DBD449;
+    text-align: center;
+    width: 100%;
+    padding: 10px 10px;
+    *{
+    font-weight: bold;
+    }
 `
 const ContainerSuperior = styled.div`
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
+    padding: 10px 20px;
+    margin: 0;
 `
-const Descricao = styled.div`
+const ContainerInferior = styled.div`
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 30px 10px 20px;
+    margin: 0;
+`
+const Descricao = styled(Card)`
     background-color:  #F4F4F4;
     height: 120px;
-    border-radius: 10px;
+    padding: 10px;
+    margin-left: 15px;
+    margin-right: 15px;
 `
 const ButtonContainer = styled.div`
-    margin-top: 10px;
+    margin: 15px 15px;
     display:flex;
     flex-direction: row-reverse;
 `
-export class CardServicosCadastrados extends React.Component{
+export default class CardServicosCadastrados extends React.Component{
     state = {
         trabalhos: [
             {
@@ -53,15 +73,21 @@ export class CardServicosCadastrados extends React.Component{
             return (
                 <ContainerGeral>
                     <CardContainer>
+                    <TituloContainer>
+                            <Typography variant='h4'>{trabalho.title}</Typography>
+                            </TituloContainer>
                         <ContainerSuperior>
-                            <h3>{trabalho.title}</h3>
-                            <p>R${trabalho.value}</p>
-                            <p>Em aberto</p>
+                            <Typography variant='h6'>R${trabalho.value}</Typography>
+                            <Typography variant='h6'>Pagamento: {trabalho.paymentMethods}</Typography>
                         </ContainerSuperior>
-                        <h4>Descrição:</h4>
                         <Descricao>
-                            {trabalho.description}
+                        <Typography variant='h6'>Descrição:</Typography>
+                            <Typography>{trabalho.description}</Typography>
                         </Descricao>
+                        <ContainerInferior>
+                        <Typography variant='h6'>Prazo: {trabalho.dueDate}</Typography>
+                            <Typography variant='h6'>Em aberto</Typography>
+                        </ContainerInferior>
                         <ButtonContainer>
                             <Button variant="contained" color="secondary">Excluir</Button>
                         </ButtonContainer>
