@@ -14,7 +14,7 @@ export class AppContainer extends Component {
   render() {
     return (
       <div>
-        <CardServicosCadastrados/>
+        <HomeInicial/>
       </div>
     )
   }
