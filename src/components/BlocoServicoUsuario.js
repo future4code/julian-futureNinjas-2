@@ -60,3 +60,5 @@ export class BlocoServicoUsuario extends React.Component{
         )
     }
 }
+
+export default BlocoServicoUsuario;

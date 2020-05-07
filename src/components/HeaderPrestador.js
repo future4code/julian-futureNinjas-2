@@ -12,22 +12,29 @@ const HeaderPrestadorContainer = styled.div`
 `
 
 const NinjaHeaderPrestador = styled.div`
-  width: 197px;
-  height: 163px;
+  width: 10vw;
+  height: 8vh;
+  margin-bottom: 4vh;
 `
+
+const ImagemNinjaPrestador = styled.img`
+  width: 8vw;
+  height: 12vh;
+`
+
 
 const BotoesHeaderPrestadorContainer = styled.div`
   background-color: #DBD449;
   display: flex;
   border-radius: 10px;
-  width: 685px;
-  height: 124px;
+  width: 27vw;
+  height: 6vh;
   justify-content: space-evenly;
   align-self: center;
   
 `
 const BotoesHeaderPrestador = styled(Button)`
-  font-size: 25px;
+  font-size: 13px;
   color: black;
   &:hover {
     font-weight: bold;
@@ -35,11 +42,10 @@ const BotoesHeaderPrestador = styled(Button)`
 `
 
 const LinhaVertical = styled.div`
-  border-left: 2px solid black;
+  border-left: 1px solid black;
   box-sizing: border-box;
-  box-shadow: 1px;
-  height: 100px;
-  margin-top: 13px;
+  height: 4vh;
+  margin-top: 0.9vh;
 `
 
 
@@ -51,7 +57,7 @@ class HeaderPrestador extends React.Component {
     return(
       <HeaderPrestadorContainer>
         <NinjaHeaderPrestador>
-          <img src={ninjaVerde} alt="Imagem do Ninja olho verde"></img>
+          <ImagemNinjaPrestador src={ninjaVerde} alt="Imagem do Ninja olho verde"></ImagemNinjaPrestador>
         </NinjaHeaderPrestador>
         <BotoesHeaderPrestadorContainer>
           <BotoesHeaderPrestador color="primary">Serviços cadastrados</BotoesHeaderPrestador>

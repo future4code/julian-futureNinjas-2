@@ -56,6 +56,7 @@ export class ServicosContratados extends React.Component{
                     <ContainerCardServicos>
                         <ContainerSuperiorCardServicos>
                             <h3>{trabalho.title}</h3>
+                            <p>Prazo {trabalho.dueDate}</p>
                             <p>R$ {trabalho.value}</p>
                         </ContainerSuperiorCardServicos>
                         <DescricaoServico>
@@ -74,3 +75,5 @@ export class ServicosContratados extends React.Component{
         )
     }
 }
+
+export default ServicosContratados;
