@@ -83,8 +83,12 @@ export class AppContainer extends Component {
     return (
       <div>
 
+        <HomeInicial/>
+
+
       <Filtro onTituloChange={this.onTituloChange} onVMinChange={this.onVMinChange} onVMaxChange={this.onVMaxChange} />
       <CardLista servicosDisponiveis={servicosFiltrados} />
+
 
       </div>
     )
