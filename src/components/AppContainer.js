@@ -20,18 +20,7 @@ export class AppContainer extends Component {
   render() {
     return (
       <div>
-       {/* <HomeInicial />
-       <BlocoServicoUsuario />
-       <CardLista />
-       <CardServiçoMin />
-       <CardServicosCadastrados />
-       <Filtro />
-       <Footer />
-       <FormularioTrabalho /> */}
-       <HeaderPrestador />
-       <HeaderUsuario /> 
-       {/* <ServicosContratados />
-       <ServicoUsuario /> */}
+ 
       </div>
     )
   }

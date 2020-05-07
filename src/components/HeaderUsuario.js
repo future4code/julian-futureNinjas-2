@@ -12,9 +12,14 @@ const HeaderUsuarioContainer = styled.div`
 `
 
 const NinjaHeaderUsuario = styled.div`
-  width: 197px;
-  height: 163px;
- `
+  width: 10vw;
+  height: 8vh;
+  margin-bottom: 4vh;
+`
+const ImagemNinjaUsuario = styled.img`
+  width: 8vw;
+  height: 12vh;
+`
 
 const BotoesHeaderUsuarioContainer = styled.div`
   background-color: #9B7ED9;
@@ -51,7 +56,7 @@ class HeaderUsuario extends React.Component {
     return(
       <HeaderUsuarioContainer>
         <NinjaHeaderUsuario>
-          <img src={ninjaVerde} alt="Imagem do Ninja olho verde"></img>
+          <ImagemNinjaUsuario src={ninjaVerde} alt="Imagem do Ninja olho verde"></ImagemNinjaUsuario>
         </NinjaHeaderUsuario>
         <BotoesHeaderUsuarioContainer>
           <BotoesHeaderUsuario color="primary">Home</BotoesHeaderUsuario>

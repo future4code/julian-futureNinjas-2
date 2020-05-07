@@ -12,15 +12,22 @@ const HeaderPrestadorContainer = styled.div`
 `
 
 const NinjaHeaderPrestador = styled.div`
-  width: 197px;
-  height: 163px;
+  width: 10vw;
+  height: 8vh;
+  margin-bottom: 4vh;
 `
+
+const ImagemNinjaPrestador = styled.img`
+  width: 8vw;
+  height: 12vh;
+`
+
 
 const BotoesHeaderPrestadorContainer = styled.div`
   background-color: #DBD449;
   display: flex;
   border-radius: 10px;
-  width: 20vw;
+  width: 27vw;
   height: 6vh;
   justify-content: space-evenly;
   align-self: center;
@@ -50,7 +57,7 @@ class HeaderPrestador extends React.Component {
     return(
       <HeaderPrestadorContainer>
         <NinjaHeaderPrestador>
-          <img src={ninjaVerde} alt="Imagem do Ninja olho verde"></img>
+          <ImagemNinjaPrestador src={ninjaVerde} alt="Imagem do Ninja olho verde"></ImagemNinjaPrestador>
         </NinjaHeaderPrestador>
         <BotoesHeaderPrestadorContainer>
           <BotoesHeaderPrestador color="primary">Serviços cadastrados</BotoesHeaderPrestador>
