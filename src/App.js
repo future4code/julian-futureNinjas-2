@@ -46,8 +46,7 @@ function App() {
 			<MuiThemeProvider theme={theme}>
 				<CssBaseline />
 				<AppContainer />
-				
-				
+
 			</MuiThemeProvider>
 		</JssProvider>
 	)

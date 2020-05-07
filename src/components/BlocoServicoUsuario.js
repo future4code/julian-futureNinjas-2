@@ -1,6 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 import Button from '@material-ui/core/Button';
+import axios from "axios";
+
 
 const ContainerGeralBlocoServicoUsuario = styled.div`
     display: flex;
@@ -38,25 +40,62 @@ const ButtonContainer = styled.div`
     flex-direction: row-reverse;
 `
 export class BlocoServicoUsuario extends React.Component{
+    state = {
+        listaServicos: [
+            {    
+                id: [],
+                title: [],
+                description: [],
+                value: [],
+                dueDate: []
+            }
+        ]
+    }
+
+    componentDidMount() {
+        this.pegarServico();
+    }
+    
+    pegarServico = () => {
+        axios
+            .get(
+                `https://us-central1-labenu-apis.cloudfunctions.net/futureNinjasTwo/jobs`,
+            )
+            .then(servico => {
+                this.setState({ servico: servico.data });
+            })
+            .catch(error => {
+                console.log(error.response);
+            });
+    };
+
     render(){
-        return(
-            <ContainerGeralBlocoServicoUsuario>
-                <ContainerBlocoServicoUsuario>
-                    <ContainerTitulo>
-                        <h2>teste</h2>
-                    </ContainerTitulo>
-                    <ContainerPrecoPrazo>
-                        <p>R$ XXX,XX</p>
-                        <p>Prazo: XX dias</p>
-                    </ContainerPrecoPrazo>
-                    <Descricao>
-                        <p>descricao</p>
-                    </Descricao>
-                    <ButtonContainer>
+        const contrataServico = this.state.listaServicos.map((servico) => {
+            console.log(servico.data)
+            return(
+                <ContainerGeralBlocoServicoUsuario>
+                    <ContainerBlocoServicoUsuario>
+                        <ContainerTitulo>
+                            <h2>{servico.title}</h2>
+                        </ContainerTitulo>
+                        <ContainerPrecoPrazo>
+                            <p>{servico.value}</p>
+                            <p>{servico.duedate}</p>
+                        </ContainerPrecoPrazo>
+                        <Descricao>
+                            <p>{servico.description}</p>
+                        </Descricao>
+                        <ButtonContainer>
                             <Button variant="contained" color="primary">Contratar</Button>
-                    </ButtonContainer>
-                </ContainerBlocoServicoUsuario>
-            </ContainerGeralBlocoServicoUsuario>
+                        </ButtonContainer>
+                    </ContainerBlocoServicoUsuario>
+                </ContainerGeralBlocoServicoUsuario>
+            )
+        })
+        return(
+            <div>contrataServico</div>
         )
     }
 }
+
+export default BlocoServicoUsuario;
