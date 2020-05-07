@@ -15,7 +15,7 @@ justify-content: space-evenly;
 
 `
 
-export class HomeInicial extends Component {
+export default class HomeInicial extends Component {
     render() {
         return(
             
