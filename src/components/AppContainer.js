@@ -6,13 +6,15 @@ import Filtro from './Filtro'
 import FormularioTrabalho from './FormularioTrabalho'
 import HeaderPrestador from './HeaderPrestador'
 import HeaderUsuario from './HeaderUsuario'
+import BlocoServicoUsuario from "./BlocoServicoUsuario"
 
 
 export class AppContainer extends Component {
   render() {
     return (
       <div>
-      <HomeInicial/>
+        <HeaderUsuario />
+        <BlocoServicoUsuario />
       </div>
     )
   }
