@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {CardServicosCadastrados} from './CardServicosCadastrados'
+import {HomeUsuario} from './HomeUsuario'
 
 import Footer from './Footer'
 
@@ -14,7 +14,7 @@ export class AppContainer extends Component {
   render() {
     return (
       <div>
-        <CardServicosCadastrados/>
+        
       </div>
     )
   }
