@@ -26,10 +26,10 @@ export class HomeInicial extends Component {
                 
 
                 <HomePrincipalBotoes>            
-                <Button variant="contained" color="primary">
+                <Button variant="contained" color="primary" onClick={this.props.onClickUsuariolegal}>
                     Contratar Serviço
                 </Button>
-                <Button variant="contained" color="secondary">
+                <Button variant="contained" color="secondary" onClick={this.props.onClickServicos}>
                     Oferecer Serviços
                 </Button>
                 </HomePrincipalBotoes>  

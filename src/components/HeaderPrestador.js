@@ -3,6 +3,9 @@ import styled from "styled-components";
 import ninjaVerde from "../imagens/ninja-olho-verde.png"
 import Button from "@material-ui/core/Button";
 import { withStyles } from "@material-ui/core";
+import { CardServicosCadastrados } from "./CardServicosCadastrados";
+import FormularioTrabalho from "./FormularioTrabalho";
+import Footer from './Footer'
 
 
 const HeaderPrestadorContainer = styled.div`
@@ -45,20 +48,37 @@ const LinhaVertical = styled.div`
 
 class HeaderPrestador extends React.Component {
 
-
-
+  state = {
+    menu: 'servicos cadastrados'
+  }
+  aparecerCardServicos = ()=> {
+    this.setState({menu: 'servicos cadastrados'})
+  }
+  aparecerFormulario = ()=> {
+    this.setState({menu: 'adicionar servicos'})
+  }
   render() {
+    
     return(
+      <div>
       <HeaderPrestadorContainer>
         <NinjaHeaderPrestador>
           <img src={ninjaVerde} alt="Imagem do Ninja olho verde"></img>
         </NinjaHeaderPrestador>
         <BotoesHeaderPrestadorContainer>
-          <BotoesHeaderPrestador color="primary">Serviços cadastrados</BotoesHeaderPrestador>
+          <BotoesHeaderPrestador color="primary" onClick={this.aparecerCardServicos}>Serviços cadastrados</BotoesHeaderPrestador>
           <LinhaVertical />
-          <BotoesHeaderPrestador color="primary">Adicionar Serviços</BotoesHeaderPrestador>
+          <BotoesHeaderPrestador color="primary" onClick={this.aparecerFormulario}>Adicionar Serviços</BotoesHeaderPrestador>
         </BotoesHeaderPrestadorContainer>
       </HeaderPrestadorContainer>
+      {(this.state.menu==='servicos cadastrados' ? 
+      <div> 
+        <CardServicosCadastrados />
+        <Footer/>
+       </div>
+      :
+       <div><FormularioTrabalho /><Footer/></div>)}
+      </div>
     );
   }
 }

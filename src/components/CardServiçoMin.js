@@ -13,7 +13,6 @@ color: #404040;
 *{
     color: inherit;
 }
-
 `
 const TituloServ = styled(Typography)`
 font-weight: bold;
