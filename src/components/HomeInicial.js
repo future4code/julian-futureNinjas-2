@@ -13,20 +13,18 @@ const HomePrincipalBotoes = styled.div`
 display: flex;
 justify-content: space-evenly;
 
-
 `
 
-export class HomeInicial extends Component {
+export default class HomeInicial extends Component {
     render() {
         return(
             
             <HomePrincipalLogo>
                 <img src={logoPadrao}/> 
-
-                
-
                 <HomePrincipalBotoes>            
                 <Button variant="contained" color="primary" onClick={this.props.onClickUsuariolegal}>
+                <HomePrincipalBotoes>            
+                <Button variant="contained" color="primary">
                     Contratar Serviço
                 </Button>
                 <Button variant="contained" color="secondary" onClick={this.props.onClickServicos}>
@@ -37,8 +35,6 @@ export class HomeInicial extends Component {
             </HomePrincipalLogo>
 
            
-
-
         )
     }
 }
