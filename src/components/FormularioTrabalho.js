@@ -3,10 +3,16 @@ import {
   Card,
   Button,
   MenuItem,
+  FormControl,
+  FormControlLabel,
+  FormGroup,
+  FormLabel,
+  Checkbox,
   TextField,
   Typography,
 } from "@material-ui/core";
 import styled from "styled-components";
+import axios from 'axios';
 
 const Formulario = styled(Card)`
   display: flex;
@@ -38,7 +44,7 @@ export default class FormularioTrabalho extends Component {
     inputTitulo: "",
     inputDescricao: "",
     inputValor: "",
-    inputPagamento: "",
+    inputPagamento: [],
     inputPrazo: "",
   };
   handleTituloChange = (event) => {
@@ -56,19 +62,51 @@ export default class FormularioTrabalho extends Component {
     }else{
         this.setState({ inputValor: Number(valor) });
     }
+  };
+  // handlePgtoChange = (event) => {
+  //   this.setState({ inputPagamento: event.target.value });
+  // };
 
-    console.log(Number(valor));
-  };
-  handlePgtoChange = (event) => {
-    this.setState({ inputPagamento: event.target.value });
-  };
+  handleCheckbox = (event) => {
+    if(event.target.checked){
+      let novoItem = event.target.value
+      let novaLista = [...this.state.inputPagamento, novoItem]
+      this.setState({ inputPagamento: novaLista })
+      console.log(novaLista)
+    }else if(!event.target.checked){
+      let removeItem = event.target.value
+      let lista = this.state.inputPagamento
+      let novaLista = lista.filter(item => {
+        return item != removeItem
+      })
+      this.setState({inputPagamento: novaLista})
+      console.log(novaLista)
+    }
+  }
   handlePrazoChange = (event) => {
     this.setState({ inputPrazo: event.target.value });
   };
   handleCadastrar = (event) => {
     event.preventDefault();
 
-    console.log(this.state);
+    const body = {
+      title: this.state.inputTitulo,
+      description: this.state.inputDescricao,
+      value: this.state.inputValor,
+      paymentMethods: this.state.inputPagamento,
+      dueDate: this.state.inputPrazo
+    }
+
+    axios
+    .post(`https://us-central1-labenu-apis.cloudfunctions.net/futureNinjasTwo/jobs`, 
+    body)
+    .then(res => {
+      window.alert("Serviço adicionado com sucesso", res);
+    })
+    .catch((err) => {
+      window.alert("Ocorreu um erro", err.response);
+    });
+
   };
 
   render() {
@@ -90,9 +128,33 @@ export default class FormularioTrabalho extends Component {
         <TextField
           id="valor"
           label="Valor (R$)"
+          type='number'
           onChange={this.handleValorChange}
         />
-        <TextField
+      <FormControl component="fieldset">
+      <FormLabel>Pagamento</FormLabel>
+      <FormGroup aria-label="position" row>
+        <FormControlLabel
+          value="Cartão de Crédito/Débito"
+          control={<Checkbox color="primary" onChange={this.handleCheckbox}/>}
+          label="Cartão de Crédito/Débito"
+          labelPlacement="end"
+        />
+        <FormControlLabel
+          value="Dinheiro"
+          control={<Checkbox color="primary" onChange={this.handleCheckbox}/>}
+          label="Dinheiro"
+          labelPlacement="end"
+        />
+        <FormControlLabel
+          value="Boleto"
+          control={<Checkbox color="primary" onChange={this.handleCheckbox}/>}
+          label="Boleto"
+          labelPlacement="end"
+        />
+      </FormGroup>
+    </FormControl>
+        {/* <TextField
           id="pag"
           select
           label="Pagamento"
@@ -102,7 +164,7 @@ export default class FormularioTrabalho extends Component {
           <MenuItem value="Dinheiro">Dinheiro</MenuItem>
           <MenuItem value="Crédito">Crédito</MenuItem>
           <MenuItem value="Débito">Débito</MenuItem>
-        </TextField>
+        </TextField> */}
         <TextField id="prazo" label="Prazo" onChange={this.handlePrazoChange} />
         <BotaoCadastro onClick={this.handleCadastrar}>Cadastrar</BotaoCadastro>
       </Formulario>
