@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Typography, Button, Card } from '@material-ui/core';
+import axios from 'axios'
 
 const ContainerGeral = styled(Card)`
     display: flex;
@@ -51,22 +52,29 @@ const ButtonContainer = styled.div`
 `
 export default class CardServicosCadastrados extends React.Component{
     state = {
-        trabalhos: [
-            {
-                "title": "Job",
-                "description": "Esse é um job muito legal!",
-                "value": 10,
-                "paymentMethods": ["card"],
-                "dueDate": 1571972400
-            },
-            {
-                "title": "Job",
-                "description": "Esse é um job muito legal!",
-                "value": 10,
-                "paymentMethods": ["card"],
-                "dueDate": 1571972400
-            }
-        ]
+        trabalhos: []
+    }
+    componentDidMount(){
+        this.atualizarNaTela()
+    }
+    atualizarNaTela =()=>{
+        axios.get('https://us-central1-labenu-apis.cloudfunctions.net/futureNinjasTwo/jobs').then((response)=>{
+            console.log(response.data.jobs)
+            const dadosApi = response.data.jobs
+
+            this.setState({trabalhos: dadosApi})
+        }).catch((error)=>{
+            console.log(error)
+        })
+    }
+
+    excluir = (idTrabalho) =>{
+        axios.delete(`https://us-central1-labenu-apis.cloudfunctions.net/futureNinjasTwo/jobs/${idTrabalho}`).then((response)=> {
+            console.log(response.data.jobs)
+            this.atualizarNaTela()
+        }).catch((error)=>{
+            console.log(error)
+        })
     }
     render(){
         const listaTrabalhos = this.state.trabalhos.map((trabalho) =>{
@@ -89,7 +97,7 @@ export default class CardServicosCadastrados extends React.Component{
                             <Typography variant='h6'>Em aberto</Typography>
                         </ContainerInferior>
                         <ButtonContainer>
-                            <Button variant="contained" color="secondary">Excluir</Button>
+                            <Button variant="contained" color="secondary" onClick={()=> this.excluir(trabalho.id)}>Excluir</Button>
                         </ButtonContainer>
                     </CardContainer>
                 </ContainerGeral>
