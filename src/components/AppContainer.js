@@ -1,10 +1,13 @@
 import React, { Component } from 'react'
 import Footer from './Footer'
-import HomeInicial from './HomeInicial'
+import { HomeInicial } from './HomeInicial'
+import HeaderPrestador from './HeaderPrestador'
+import HeaderUsuario from './HeaderUsuario'
 import CardServiçoMin from './CardServiçoMin'
 import { CardLista } from './CardLista'
 import Filtro from './Filtro'
 import FormularioTrabalho from './FormularioTrabalho'
+import { BlocoServicoUsuario } from './BlocoServicoUsuario'
 import HeaderPrestador from './HeaderPrestador'
 import HeaderUsuario from './HeaderUsuario'
 import BlocoServicoUsuario from "./BlocoServicoUsuario"
@@ -13,6 +16,8 @@ import BlocoServicoUsuario from "./BlocoServicoUsuario"
 export class AppContainer extends Component {
 
   state = {
+    pagePrincipal: "inicio",
+
     servicos: [
       {
         title: "Design de Roupas Maneiras",
@@ -55,6 +60,14 @@ export class AppContainer extends Component {
     vMinSearch: '',
     vMaxSearch: ''
   }
+    
+  pageFornecedor = ()=> {
+    this.setState({pagePrincipal: 'fornecedor'})
+  }
+  pageUsuario= ()=> {
+    
+    this.setState({pagePrincipal: 'usuario'})
+  }
 
   onTituloChange = (e) => {
     this.setState({tituloSearch: e.target.value}, console.log(this.state.tituloSearch))
@@ -79,18 +92,32 @@ export class AppContainer extends Component {
           return servico.title.toLowerCase().includes(tituloSearch.toLowerCase()) && Number(servico.value) >= vMinSearch && Number(servico.value) <= vMaxSearch
         }
       });
-
-    return (
-      <div>
-
-        <HomeInicial/>
-
-
-      <Filtro onTituloChange={this.onTituloChange} onVMinChange={this.onVMinChange} onVMaxChange={this.onVMaxChange} />
-      <CardLista servicosDisponiveis={servicosFiltrados} />
-
-
-      </div>
-    )
+    
+      switch(this.state.pagePrincipal){
+      case 'inicio':{
+        return (
+          <div>
+          <HomeInicial onClickServicos = {this.pageFornecedor} 
+          onClickUsuariolegal={this.pageUsuario}/>
+          </div>
+        )
+      }
+      case 'fornecedor':
+        return(
+          <div>
+            <HeaderPrestador/>
+          </div>
+        )
+      
+      case 'usuario':
+        return(
+          <div>
+            <HeaderUsuario/>
+            <Filtro onTituloChange={this.onTituloChange} onVMinChange={this.onVMinChange} onVMaxChange={this.onVMaxChange} />
+            <CardLista servicosDisponiveis={servicosFiltrados} />
+          </div>
+        )
+      
+    };
   }
 }
