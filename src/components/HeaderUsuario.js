@@ -4,8 +4,10 @@ import ninjaVerde from "../imagens/ninja-olho-roxo.png"
 import Button from "@material-ui/core/Button";
 import { withStyles } from "@material-ui/core";
 import { HomeInicial } from "./HomeInicial";
-import CardServiçoMin from "./CardServiçoMin";
 import {ServicosContratados} from "./ServicosContratados"
+import HomeUsuario from './HomeUsuario'
+import { CardLista } from './CardLista'
+import Filtro from './Filtro'
 
 const HeaderUsuarioContainer = styled.div`
   display: flex;
@@ -51,7 +53,48 @@ const LinhaVertical = styled.div`
 class HeaderUsuario extends React.Component {
 
   state = {
-    menuUsuario: "home"
+    menuUsuario: "home",
+    servicos: [
+      {
+        title: "Design de Roupas Maneiras",
+        description: "Esse é um job muito legal!",
+        value: 4531.23,
+        paymentMethods: ["card"],
+        dueDate: 2071972400
+      },
+      {
+        title: "Maquiagem Profissional",
+        description: "Esse é um job muito legal!",
+        value: 112000,
+        paymentMethods: ["dinheiro"],
+        dueDate: 2465437476
+      },
+      {
+        title: "Construção de Casa Submarina",
+        description: "Esse é um job muito legal!",
+        value: 400,
+        paymentMethods: ["gratidão"],
+        dueDate: 2342324
+      },
+      {
+        title: "Design de GOTY",
+        description: "Esse é um job muito legal!",
+        value: 9000000,
+        paymentMethods: ["money"],
+        dueDate: 234235523
+      },
+      {
+        title: "Chef Particular",
+        description: "Esse é um job muito legal!",
+        value: 2120,
+        paymentMethods: ["card"],
+        dueDate: 56533234
+      }
+    ],
+
+    tituloSearch: '',
+    vMinSearch: '',
+    vMaxSearch: ''
   }
 
   aparecerHome = ()=> {
@@ -64,7 +107,25 @@ class HeaderUsuario extends React.Component {
     this.setState({menuUsuario: 'servicos contratados'})
   }
 
+  onTituloChange = (e) => {
+    this.setState({tituloSearch: e.target.value}, console.log(this.state.tituloSearch))
+  }
+  onVMinChange = (e) => {
+    this.setState({vMinSearch: e.target.value})
+  }
+  onVMaxChange = (e) => {
+    this.setState({vMaxSearch: e.target.value})
+  }
   render() {
+    const { servicos, tituloSearch, vMinSearch, vMaxSearch } = this.state;
+    const servicosFiltrados = servicos.filter(
+      servico => {
+        if(vMaxSearch == '' || Number(vMaxSearch) <= Number(vMinSearch)){
+        return servico.title.toLowerCase().includes(tituloSearch.toLowerCase()) && Number(servico.value) >= vMinSearch && Number(servico.value) <= Infinity
+        }else if(Number(vMaxSearch) > Number(vMinSearch)){
+          return servico.title.toLowerCase().includes(tituloSearch.toLowerCase()) && Number(servico.value) >= vMinSearch && Number(servico.value) <= vMaxSearch
+        }
+      });
     return(
       <div>
       <HeaderUsuarioContainer>
@@ -81,10 +142,12 @@ class HeaderUsuario extends React.Component {
       </HeaderUsuarioContainer>
       {
       this.state.menuUsuario === 'home'?
-      <div></div>
+      <div><HomeUsuario/></div>
       :
       this.state.menuUsuario === 'servicos disponiveis'?
-      <div> <CardServiçoMin/></div>:
+      <div>
+        <Filtro onTituloChange={this.onTituloChange} onVMinChange={this.onVMinChange} onVMaxChange={this.onVMaxChange} />
+        <CardLista servicosDisponiveis={servicosFiltrados} /></div>:
       <div><ServicosContratados/></div>
       }
       </div>

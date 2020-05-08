@@ -40,11 +40,10 @@ const Apresentação = styled.div`
 
 
 
-export class HomeUsuario extends Component {
+export default class HomeUsuario extends Component {
     render() {
         return(
         <div>
-            <HeaderUsuario/>
             <Slogan>
             <img src={logoTexto}/>
             </Slogan>

@@ -23,8 +23,6 @@ export default class HomeInicial extends Component {
                 <img src={logoPadrao}/> 
                 <HomePrincipalBotoes>            
                 <Button variant="contained" color="primary" onClick={this.props.onClickUsuariolegal}>
-                <HomePrincipalBotoes>            
-                <Button variant="contained" color="primary">
                     Contratar Serviço
                 </Button>
                 <Button variant="contained" color="secondary" onClick={this.props.onClickServicos}>

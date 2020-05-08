@@ -41,7 +41,6 @@ export default class CardServiçoMin extends Component {
       <CartaoMin>
           <TituloServ variant='h5'>{this.props.servico.title}</TituloServ>
           <TextoComp>R$ {this.props.servico.value}</TextoComp>
-          {/* <TextoComp>Pagamento: {this.props.servico.paymentMethods}</TextoComp> */}
           <TextoComp>Prazo: {this.props.servico.dueDate}</TextoComp>
         <BotaoVisualizar onClick={this.props.onVisualizarClick}>Visualizar</BotaoVisualizar>
       </CartaoMin>

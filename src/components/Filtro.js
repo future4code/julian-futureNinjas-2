@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import { Card, TextField, Button } from '@material-ui/core'
+import { Card, TextField } from '@material-ui/core'
 import styled from 'styled-components'
-import Filter from '@material-ui/icons/FilterListRounded'
+// import Filter from '@material-ui/icons/FilterListRounded'
 
 const CartaoFiltro = styled(Card)`
 display: flex;
@@ -15,12 +15,12 @@ const InputFiltro = styled(TextField)`
 background-color: #ffffff;
 border-radius: 5px;
 `
-const BotaoFiltro = styled(Button)`
-background-color: #8D6AD9;
-color: #ECEBF2;
-padding: 0 20px;
-font-weight: bold;
-`
+// const BotaoFiltro = styled(Button)`
+// background-color: #8D6AD9;
+// color: #ECEBF2;
+// padding: 0 20px;
+// font-weight: bold;
+// `
 
 export default class Filtro extends Component {
 
@@ -49,7 +49,7 @@ export default class Filtro extends Component {
           variant='filled'
           onChange={this.props.onVMaxChange}
         />
-        <BotaoFiltro onClick={this.props.onFiltroClick}>Filtrar <Filter/></BotaoFiltro>
+        {/* <BotaoFiltro onClick={this.props.onFiltroClick}>Filtrar <Filter/></BotaoFiltro> */}
       </CartaoFiltro>
     )
   }

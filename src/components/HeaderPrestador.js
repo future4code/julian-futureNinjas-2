@@ -3,7 +3,7 @@ import styled from "styled-components";
 import ninjaVerde from "../imagens/ninja-olho-verde.png"
 import Button from "@material-ui/core/Button";
 import { withStyles } from "@material-ui/core";
-import { CardServicosCadastrados } from "./CardServicosCadastrados";
+import CardServicosCadastrados from "./CardServicosCadastrados";
 import FormularioTrabalho from "./FormularioTrabalho";
 import Footer from './Footer'
 
