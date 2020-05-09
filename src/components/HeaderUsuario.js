@@ -8,6 +8,7 @@ import {ServicosContratados} from "./ServicosContratados"
 import HomeUsuario from './HomeUsuario'
 import { CardLista } from './CardLista'
 import Filtro from './Filtro'
+import axios from 'axios'
 
 const HeaderUsuarioContainer = styled.div`
   display: flex;
@@ -54,43 +55,7 @@ class HeaderUsuario extends React.Component {
 
   state = {
     menuUsuario: "home",
-    servicos: [
-      {
-        title: "Design de Roupas Maneiras",
-        description: "Esse é um job muito legal!",
-        value: 4531.23,
-        paymentMethods: ["card"],
-        dueDate: 2071972400
-      },
-      {
-        title: "Maquiagem Profissional",
-        description: "Esse é um job muito legal!",
-        value: 112000,
-        paymentMethods: ["dinheiro"],
-        dueDate: 2465437476
-      },
-      {
-        title: "Construção de Casa Submarina",
-        description: "Esse é um job muito legal!",
-        value: 400,
-        paymentMethods: ["gratidão"],
-        dueDate: 2342324
-      },
-      {
-        title: "Design de GOTY",
-        description: "Esse é um job muito legal!",
-        value: 9000000,
-        paymentMethods: ["money"],
-        dueDate: 234235523
-      },
-      {
-        title: "Chef Particular",
-        description: "Esse é um job muito legal!",
-        value: 2120,
-        paymentMethods: ["card"],
-        dueDate: 56533234
-      }
-    ],
+    servicos: [],
 
     tituloSearch: '',
     vMinSearch: '',
@@ -116,6 +81,23 @@ class HeaderUsuario extends React.Component {
   onVMaxChange = (e) => {
     this.setState({vMaxSearch: e.target.value})
   }
+
+  componentDidMount() {
+    axios
+    .get(
+      "https://us-central1-labenu-apis.cloudfunctions.net/futureNinjasTwo/jobs"
+    )
+    .then((response) => {
+      const dadosApi = response.data.jobs;
+      this.setState({ servicos: dadosApi });
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+
+    console.log('componentDidMount chamado')
+  }
+
   render() {
     const { servicos, tituloSearch, vMinSearch, vMaxSearch } = this.state;
     const servicosFiltrados = servicos.filter(

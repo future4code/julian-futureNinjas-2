@@ -37,50 +37,14 @@ const BotaoVisualizar = styled(Button)`
 `;
 
 export default class CardServiçoMin extends Component {
-  state = {
-    servicos: [],
-  };
-
-  aparecerBlocoServicoUsuario = () => {
-    this.setState({ menu: "servicos usuario" });
-  };
-
-  componentDidMount() {
-    this.preencherCardsServicos();
-  }
-  preencherCardsServicos = () => {
-    axios
-      .get(
-        "https://us-central1-labenu-apis.cloudfunctions.net/futureNinjasTwo/jobs"
-      )
-      .then((response) => {
-        const dadosApi = response.data.jobs;
-        this.setState({ servicos: dadosApi });
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-
   render() {
-    const listaDeServicos = this.state.servicos.map((servico) => {
-      return (
-        <div>
-          {this.state.menu === "servicos usuario" ? (
-            <BlocoServicoUsuario />
-          ) : (
-            <CartaoMin>
-              <TituloServ variant="h5">{servico.title}</TituloServ>
-              <TextoComp>R$ {servico.value}</TextoComp>
-              <TextoComp>Prazo: {servico.dueDate}</TextoComp>
-              <BotaoVisualizar onClick={() => this.aparecerBlocoServicoUsuario}>
-                Visualizar
-              </BotaoVisualizar>
-            </CartaoMin>
-          )}
-        </div>
-      );
-    });
-    return <div>{listaDeServicos}</div>;
+    return (
+      <CartaoMin>
+        <TituloServ variant="h5">{this.props.servico.title}</TituloServ>
+        <TextoComp>R$ {this.props.servico.value}</TextoComp>
+        <TextoComp>Prazo: {this.props.servico.dueDate}</TextoComp>
+        <BotaoVisualizar>Visualizar</BotaoVisualizar>
+      </CartaoMin>
+    );
   }
 }
