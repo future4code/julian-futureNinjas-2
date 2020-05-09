@@ -20,3 +20,4 @@ export const CardLista = props =>{
     ))}
     </div>;
 };
+
