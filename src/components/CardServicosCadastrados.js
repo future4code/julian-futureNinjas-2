@@ -6,6 +6,8 @@ import axios from 'axios'
 const ContainerGeral = styled(Card)`
     display: flex;
     justify-content: center;
+    background-color: #F5F3FC;
+
 `
 const CardContainer = styled(Card)`
     background-color: #ECEBF2;

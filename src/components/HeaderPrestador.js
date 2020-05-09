@@ -7,10 +7,19 @@ import CardServicosCadastrados from "./CardServicosCadastrados";
 import FormularioTrabalho from "./FormularioTrabalho";
 import Footer from './Footer'
 
-const HeaderPrestadorContainer = styled(Card)`
+
+
+const MainContainer = styled.div`
+background-color: #F5F3FC;
+
+`
+const HeaderPrestadorContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
+  margin-bottom: 50px;
+  padding-top: 50px;
 `
 
 const ImagemNinjaPrestador = styled.img`
@@ -26,24 +35,35 @@ const BotoesHeaderPrestadorContainer = styled(Card)`
   height: 80px;
   justify-content: space-evenly;
   align-self: center;
-  width: 49.5%;
-  
+  width: 49.9%; 
 `
-const BotoesHeaderPrestador = styled(Button)`
+const BotaoHeaderPrestadorEsqu = styled(Button)`
   font-size: 13px;
   color: black;
+  width: 100%;
+  border-right: solid black 1px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  &:hover {
+    font-weight: bold;
+  }
+`
+const BotaoHeaderPrestadorDir = styled(Button)`
+  font-size: 13px;
+  color: black;
+  width: 100%;
   &:hover {
     font-weight: bold;
   }
 `
 
-const LinhaVertical = styled.div`
-  border-left: 1px solid black;
-  box-sizing: border-box;
-  height: 80%;
-  width: 1%;
-  margin: 1px 0;
-`
+// const LinhaVertical = styled.div`
+//   border-left: 1px solid black;
+//   box-sizing: border-box;
+//   height: 80%;
+//   width: 1%;
+//   margin: 1px 0;
+// `
 
 
 class HeaderPrestador extends React.Component {
@@ -60,13 +80,12 @@ class HeaderPrestador extends React.Component {
   render() {
     
     return(
-      <div>
+      <MainContainer>
       <HeaderPrestadorContainer>
           <ImagemNinjaPrestador src={ninjaVerde} alt="Imagem do Ninja olho verde"></ImagemNinjaPrestador>
         <BotoesHeaderPrestadorContainer>
-          <BotoesHeaderPrestador color="primary" onClick={this.aparecerCardServicos}>Serviços cadastrados</BotoesHeaderPrestador>
-          <LinhaVertical />
-          <BotoesHeaderPrestador color="primary" onClick={this.aparecerFormulario}>Adicionar Serviços</BotoesHeaderPrestador>
+          <BotaoHeaderPrestadorEsqu color="primary" onClick={this.aparecerCardServicos}>Serviços cadastrados</BotaoHeaderPrestadorEsqu>
+          <BotaoHeaderPrestadorDir color="primary" onClick={this.aparecerFormulario}>Adicionar Serviços</BotaoHeaderPrestadorDir>
         </BotoesHeaderPrestadorContainer>
       </HeaderPrestadorContainer>
       {(this.state.menu==='servicos cadastrados' ? 
@@ -76,7 +95,7 @@ class HeaderPrestador extends React.Component {
        </div>
       :
        <div><FormularioTrabalho /><Footer/></div>)}
-      </div>
+      </MainContainer>
     );
   }
 }
