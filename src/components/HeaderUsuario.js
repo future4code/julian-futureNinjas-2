@@ -1,8 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import ninjaVerde from "../imagens/ninja-olho-roxo.png"
-import Button from "@material-ui/core/Button";
-import { withStyles } from "@material-ui/core";
+import { withStyles, Button, Card } from "@material-ui/core";
 import { HomeInicial } from "./HomeInicial";
 import {ServicosContratados} from "./ServicosContratados"
 import HomeUsuario from './HomeUsuario'
@@ -14,42 +13,42 @@ const HeaderUsuarioContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-`
-
-const NinjaHeaderUsuario = styled.div`
-  width: 10vw;
-  height: 8vh;
-  margin-bottom: 4vh;
+  width: 100%;
+  margin-bottom: 50px;
+  padding-top: 50px;
 `
 const ImagemNinjaUsuario = styled.img`
-  width: 8vw;
-  height: 12vh;
+  width: 135px;
+  text-align: center;
 `
 
-const BotoesHeaderUsuarioContainer = styled.div`
+const BotoesHeaderUsuarioContainer = styled(Card)`
   background-color: #9B7ED9;
   display: flex;
-  border-radius: 10px;
-  width: 30vw;
-  height: 6vh;
+  width: 750px;
+  height: 80px;
   justify-content: space-evenly;
   align-self: center;
 `
-const BotoesHeaderUsuario = styled(Button)`
+const BotaoHeaderUsuarioDir = styled(Button)`
   font-size: 13px;
   color: white;
   &:hover {
     font-weight: bold;
   }
+  width: 33.3%;
 `
-
-const LinhaVertical = styled.div`
-  border-left: 1px solid white;
-  box-sizing: border-box;
-  height: 4vh;
-  margin-top: 0.9vh;
+const BotaoHeaderUsuarioEsq = styled(Button)`
+  font-size: 13px;
+  color: white;
+  &:hover {
+    font-weight: bold;
+  }
+  width: 33.3%;
+  border-right: solid white 1px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
 `
-
 
 class HeaderUsuario extends React.Component {
 
@@ -98,6 +97,7 @@ class HeaderUsuario extends React.Component {
     console.log('componentDidMount chamado')
   }
 
+
   render() {
     const { servicos, tituloSearch, vMinSearch, vMaxSearch } = this.state;
     const servicosFiltrados = servicos.filter(
@@ -111,15 +111,13 @@ class HeaderUsuario extends React.Component {
     return(
       <div>
       <HeaderUsuarioContainer>
-        <NinjaHeaderUsuario>
           <ImagemNinjaUsuario src={ninjaVerde} alt="Imagem do Ninja olho verde"></ImagemNinjaUsuario>
-        </NinjaHeaderUsuario>
         <BotoesHeaderUsuarioContainer>
-          <BotoesHeaderUsuario color="primary" onClick={this.aparecerHome}>Home</BotoesHeaderUsuario>
-          <LinhaVertical />
-          <BotoesHeaderUsuario color="primary" onClick={this.aparecerServicosDisponiveis}>Serviços disponíveis</BotoesHeaderUsuario>
-          <LinhaVertical />
-          <BotoesHeaderUsuario color="primary" onClick ={this.aparecerServicosContratados}>Serviços contratados</BotoesHeaderUsuario>
+          <BotaoHeaderUsuarioEsq color="primary" onClick={this.aparecerHome}>Home</BotaoHeaderUsuarioEsq>
+          <BotaoHeaderUsuarioEsq color="primary" onClick={this.aparecerServicosDisponiveis}>Serviços disponíveis</BotaoHeaderUsuarioEsq>
+          <BotaoHeaderUsuarioDir
+           color="primary" onClick ={this.aparecerServicosContratados}>Serviços contratados</BotaoHeaderUsuarioDir
+          >
         </BotoesHeaderUsuarioContainer>
       </HeaderUsuarioContainer>
       {
