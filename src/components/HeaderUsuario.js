@@ -55,7 +55,7 @@ class HeaderUsuario extends React.Component {
   state = {
     menuUsuario: "home",
     servicos: [],
-
+    servicosContratados: [],
     tituloSearch: '',
     vMinSearch: '',
     vMaxSearch: ''
@@ -97,7 +97,9 @@ class HeaderUsuario extends React.Component {
     console.log('componentDidMount chamado')
   }
 
-
+  contrataServicos = (event) => {
+    console.log(event.target.getAttribute("dataKey"))
+  }
   render() {
     const { servicos, tituloSearch, vMinSearch, vMaxSearch } = this.state;
     const servicosFiltrados = servicos.filter(
@@ -127,7 +129,7 @@ class HeaderUsuario extends React.Component {
       this.state.menuUsuario === 'servicos disponiveis'?
       <div>
         <Filtro onTituloChange={this.onTituloChange} onVMinChange={this.onVMinChange} onVMaxChange={this.onVMaxChange} />
-        <CardLista servicosDisponiveis={servicosFiltrados} /></div>:
+        <CardLista servicosDisponiveis={servicosFiltrados} pegarIdNoHeader = {this.contrataServicos}/></div>:
       <div><ServicosContratados/></div>
       }
       </div>
