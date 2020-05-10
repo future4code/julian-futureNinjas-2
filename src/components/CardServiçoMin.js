@@ -4,6 +4,7 @@ import styled from "styled-components";
 import BlocoServicoUsuario from "./BlocoServicoUsuario";
 import axios from "axios";
 import Collapse from '@material-ui/core/Collapse'
+import More from '@material-ui/icons/More'
 
 const CartaoMin = styled(Card)`
   padding: 10px 20px;
@@ -84,7 +85,7 @@ export default class CardServiçoMin extends Component {
             </ul>
           </Typography>
           <ButtonContainer>
-            <Button variant="contained" color="primary" onClick= {this.props.pegarId} dataKey={this.props.servico.id} >Contratar</Button>
+            <Button variant="outlined" color="primary" onClick= {this.props.pegarId} dataKey={this.props.servico.id}>Contratar</Button>
           </ButtonContainer>
         </Collapse>
       </CartaoMin>

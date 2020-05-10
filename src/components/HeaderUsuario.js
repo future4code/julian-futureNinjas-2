@@ -98,16 +98,26 @@ class HeaderUsuario extends React.Component {
   }
 
   contrataServicos = (event) => {
-    console.log(event.target.getAttribute("dataKey"))
+    const id = event.target.parentNode.getAttribute('dataKey');
+
+    axios
+    .put(`https://us-central1-labenu-apis.cloudfunctions.net/futureNinjasTwo/jobs/${id}/take`)
+    .then(response => {
+      const servContratado = response.data;
+      console.log(servContratado);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
   }
   render() {
     const { servicos, tituloSearch, vMinSearch, vMaxSearch } = this.state;
     const servicosFiltrados = servicos.filter(
       servico => {
         if(vMaxSearch == '' || Number(vMaxSearch) <= Number(vMinSearch)){
-        return servico.title.toLowerCase().includes(tituloSearch.toLowerCase()) && Number(servico.value) >= vMinSearch && Number(servico.value) <= Infinity
+        return servico.title.toLowerCase().includes(tituloSearch.toLowerCase()) && Number(servico.value) >= vMinSearch && Number(servico.value) <= Infinity && !servico.taken
         }else if(Number(vMaxSearch) > Number(vMinSearch)){
-          return servico.title.toLowerCase().includes(tituloSearch.toLowerCase()) && Number(servico.value) >= vMinSearch && Number(servico.value) <= vMaxSearch
+          return servico.title.toLowerCase().includes(tituloSearch.toLowerCase()) && Number(servico.value) >= vMinSearch && Number(servico.value) <= vMaxSearch && !servico.taken
         }
       });
     return(
